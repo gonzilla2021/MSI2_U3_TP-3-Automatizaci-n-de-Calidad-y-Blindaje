@@ -1,20 +1,19 @@
 import unittest
 
+
 def autorizar_venta(stock, cantidad, cliente_activo):
     if cantidad <= 0:
         raise ValueError("La cantidad debe ser positiva")
 
     autorizada = False
 
-    if cliente_activo:
-        if stock >= cantidad:
-            autorizada = True
+    if cliente_activo and stock >= cantidad:
+        autorizada = True
 
     return autorizada
 
 
 class TestAutorizarVenta(unittest.TestCase):
-
     def test_venta_autorizada(self):
         # Arrange: cliente activo y stock suficiente.
         stock, cantidad, cliente_activo = 8, 3, True
