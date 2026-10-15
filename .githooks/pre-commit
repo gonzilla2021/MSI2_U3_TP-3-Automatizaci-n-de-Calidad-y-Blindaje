@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+PYTHON="./.venv/Scripts/python.exe"
+RUFF="./.venv/Scripts/ruff.exe"
+
+if [ ! -f "$PYTHON" ] || [ ! -f "$RUFF" ]; then
+    echo "ERROR: faltan Python o Ruff en .venv."
+    exit 1
+fi
+
+echo "1/3 Verificando formato..."
+"$RUFF" format --check patronAAA.py
+
+echo "2/3 Ejecutando linter..."
+"$RUFF" check patronAAA.py
+
+echo "3/3 Ejecutando pruebas unitarias..."
+"$PYTHON" patronAAA.py
+
+echo "Controles de calidad aprobados."

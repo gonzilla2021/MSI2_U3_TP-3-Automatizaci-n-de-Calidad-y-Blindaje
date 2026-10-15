@@ -1,0 +1,7 @@
+# Automatically created by ruff.
+
+.venv/
+.ruff_cache/
+__pycache__/
+.coverage
+htmlcov/
