@@ -1,16 +1,6 @@
 import unittest
 
-
-def autorizar_venta(stock, cantidad, cliente_activo):
-    if cantidad <= 0:
-        raise ValueError("La cantidad debe ser positiva")
-
-    autorizada = False
-
-    if cliente_activo and stock >= cantidad:
-        autorizada = True
-
-    return autorizada
+from ventas import autorizar_venta
 
 
 class TestAutorizarVenta(unittest.TestCase):
@@ -58,7 +48,3 @@ class TestAutorizarVenta(unittest.TestCase):
         # Assert: debe producirse una excepción controlada.
         self.assertIsInstance(error, ValueError)
         self.assertEqual(str(error), "La cantidad debe ser positiva")
-
-
-if __name__ == "__main__":
-    unittest.main()

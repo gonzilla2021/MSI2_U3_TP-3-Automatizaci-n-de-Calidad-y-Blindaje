@@ -10,12 +10,12 @@ if [ ! -f "$PYTHON" ] || [ ! -f "$RUFF" ]; then
 fi
 
 echo "1/3 Verificando formato..."
-"$RUFF" format --check patronAAA.py
+"$RUFF" format --check .
 
 echo "2/3 Ejecutando linter..."
-"$RUFF" check patronAAA.py
+"$RUFF" check .
 
 echo "3/3 Ejecutando pruebas unitarias..."
-"$PYTHON" patronAAA.py
+"$PYTHON" -m unittest discover -v
 
 echo "Controles de calidad aprobados."
